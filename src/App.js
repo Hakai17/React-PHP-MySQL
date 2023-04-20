@@ -1,10 +1,14 @@
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "./routes/Routes";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      hello
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
 }
 
