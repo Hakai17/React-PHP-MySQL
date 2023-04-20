@@ -2,8 +2,8 @@ import Select from "../Select/Select"
 
 export default function AddBody() {
   return (
-    <form id="product_form" action="/add-product" method="post">
-      <div className="col-sm-6">
+    <form id="product_form" action="/addproduct" method="post">
+      <div className="col-sm-6 m-4">
         <div className="mb-3 row">
           <label htmlFor="sku" className="col-sm-2 col-form-label">
             SKU
@@ -19,7 +19,7 @@ export default function AddBody() {
           </div>
         </div>
       </div>
-      <div className="col-sm-6">
+      <div className="col-sm-6 m-4">
         <div className="mb-3 row">
           <label htmlFor="name" className="col-sm-2 col-form-label">
             Name
@@ -35,7 +35,7 @@ export default function AddBody() {
           </div>
         </div>
       </div>
-      <div className="col-sm-6">
+      <div className="col-sm-6 m-4">
         <div className="mb-3 row">
           <label htmlFor="price" className="col-sm-2 col-form-label">
             Price ($)

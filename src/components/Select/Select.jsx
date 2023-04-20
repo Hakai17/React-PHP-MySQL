@@ -8,7 +8,7 @@ const Select = () => {
   };
 
   return (
-    <div className="col-sm-8">
+    <div className="col-sm-8 m-4">
       <div className="mb-3 row">
         <label htmlFor="productType" className="col-sm-2 col-htmlForm-label">
           Type Switcher
