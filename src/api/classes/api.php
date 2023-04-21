@@ -27,7 +27,7 @@ class API extends connect {
                 "name"=>$Fetch['name'],
                 "price"=>$Fetch['price'],
                 "type"=>$Fetch['type'],
-                "atributte"=>$Fetch['atributte']
+                "attribute"=>$Fetch['attribute']
             ];
             $I++;
         }

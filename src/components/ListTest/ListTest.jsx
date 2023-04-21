@@ -83,7 +83,7 @@ function List() {
                   <p className="text-center product-card-text">{item.name}</p>
                   <p className="text-center product-card-text">{item.price}</p>
                   <p className="text-center product-card-text">
-                    {item.atributte}
+                    {item.attribute}
                   </p>
                 </li>
               ))}
