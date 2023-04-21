@@ -1,11 +1,11 @@
 <?php
-abstract class connect{
+class connect{
 
     protected function connectDB()
     {
          try{
-             $Con=new PDO("mysql:host=localhost;dbname=scandiweb","root","");
-             return $Con;
+             $conn=new PDO("mysql:host=localhost;dbname=scandiweb","root","");
+             return $conn;
          }catch (PDOException $Erro){
              return $Erro->getMessage();
          }
