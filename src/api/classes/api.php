@@ -35,9 +35,26 @@ class API extends connect {
         echo json_encode($J);
     }
 
+    public function createData()
+        {
+        $body = json_decode(file_get_contents('php://input'), true);
 
-    public function createData($data) {
-        // Insert the data on DB
+        $sql = "INSERT INTO products (sku, name, price, type, attribute) VALUES (";
+
+        $bodyValues = "'".implode("', '", array_values($body))."'";
+        $sql .= $bodyValues.");";
+
+        $db =$this->connectDB();
+        $query = $db->prepare($sql);
+        $queryResponse = $query->execute();
+
+        if($queryResponse){
+            echo json_encode(["data" => "success"]);
+            http_response_code(200);
+        } else {
+            echo json_encode(["data" => "error"]);
+            http_response_code(500);
+        }
     }
 
     public function deleteData($id) {
