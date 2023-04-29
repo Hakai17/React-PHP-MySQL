@@ -18,52 +18,46 @@ function List() {
       });
   }, []);
 
-  const handleDelete = async () => {
-    const selectedItems = items.filter((item) => item.checked);
-    const selectedIds = selectedItems.map((item) => item.id);
-    try {
-      await axios.delete("http://localhost/scandiweb/src/api/index.php", {
-        data: { ids: selectedIds },
-      });
-      setItems((prevItems) =>
-        prevItems.filter((item) => !selectedIds.includes(item.id))
-      );
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleCheckboxChange = (event) => {
-    const id = Number(event.target.value);
-    const newItems = items.map((item) => {
-      if (item.id === id) {
-        return { ...item, checked: !item.checked };
-      } else {
-        return item;
+  const deleteProductById = () => {
+    let arrayids = [];
+    items.forEach((item) => {
+      if (item.select) {
+        arrayids.push(item.id);
       }
     });
-    setItems(newItems);
+    axios.delete("http://localhost/scandiweb/src/api/index.php")
+    .then(redirectForHome)
+    console.log(arrayids);
   };
 
   const navigate = useNavigate();
   const redirectForAdd = () => {
     navigate("/addproduct");
   };
+  const redirectForHome = () => {
+    navigate("/")
+  }
+
 
   return (
-    <form id="product_form" method="POST">
-      <div className="row">
-        <div className="col header-left">
-          <Navbar title="Product List" />
+    <div className="row">
+      <div className="col header-left">
+        <Navbar title="Product List" />
+      </div>
+      <div className="col header-right">
+        <div className="float-end">
+          <button onClick={redirectForAdd}>ADD</button>
+          <button
+            onClick={() => {
+              deleteProductById();
+            }}
+            id="delete-product-btn"
+          >
+            MASS DELETE
+          </button>
         </div>
-        <div className="col header-right">
-          <div className="float-end">
-            <button onClick={redirectForAdd}>ADD</button>
-            <button onClick={handleDelete} id="delete-product-btn">
-              MASS DELETE
-            </button>
-          </div>
-        </div>
+      </div>
+      <form id="product_form">
         <hr></hr>
         <div className="col-sm-12">
           <div className="product-card-body">
@@ -74,14 +68,20 @@ function List() {
                     <input
                       type="checkbox"
                       className="m-2 delete-checkbox"
-                      name={`checkbox${item.id}`}
-                      checked={item.checked}
-                      onChange={handleCheckboxChange}
+                      value={item.id}
+                      name={item.id}
+                      onChange={(e) => {
+                        item.select = e.target.checked;
+                        setItems(items);
+                      }}
+                      title="test"
                     />
                   </label>
                   <p className="text-center product-card-text">{item.sku}</p>
                   <p className="text-center product-card-text">{item.name}</p>
-                  <p className="text-center product-card-text">{item.price}</p>
+                  <p className="text-center product-card-text">
+                    {item.price} $
+                  </p>
                   <p className="text-center product-card-text">
                     {item.attribute}
                   </p>
@@ -90,8 +90,8 @@ function List() {
             </ul>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
