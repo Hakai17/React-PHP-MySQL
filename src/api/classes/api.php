@@ -14,13 +14,13 @@ class API extends connect {
 
     public function showProduct()
     {
-        $BFetch=$this->connectDB()->prepare("select * from products");
-        $BFetch->execute();
+        $stmt=$this->connectDB()->prepare("select * from products");
+        $stmt->execute();
 
         $J=[];
         $I=0;
 
-        while($Fetch=$BFetch->fetch(PDO::FETCH_ASSOC)){
+        while($Fetch=$stmt->fetch(PDO::FETCH_ASSOC)){
             $J[$I]=[
                 "id"=>$Fetch['id'],
                 "sku"=>$Fetch['sku'],
@@ -57,8 +57,14 @@ class API extends connect {
         }
     }
 
-    public function deleteData($id) {
-        // Delete the id requested
+    public function deleteData($ids) {
+        $ids = json_decode(file_get_contents("php://input"));
+
+        $stmt=$this->connectDB()->prepare("DELETE FROM products WHERE id IN (" . implode(",", array_values($ids)) . ")");
+        $stmt->execute();
+
+        header("Content-Type: application/json");
+        echo json_encode(["success" => true]);
     }
 }
 ?>
