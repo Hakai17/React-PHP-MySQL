@@ -27,7 +27,9 @@ class API extends connect {
                 "name"=>$Fetch['name'],
                 "price"=>$Fetch['price'],
                 "type"=>$Fetch['type'],
-                "attribute"=>$Fetch['attribute']
+                "attribute"=>$Fetch['attribute'],
+                "attribute2"=>$Fetch['attribute2'],
+                "attribute3"=>$Fetch['attribute3']
             ];
             $I++;
         }
@@ -39,7 +41,7 @@ class API extends connect {
         {
         $body = json_decode(file_get_contents('php://input'), true);
 
-        $sql = "INSERT INTO products (sku, name, price, type, attribute) VALUES (";
+        $sql = "INSERT INTO products (sku, name, price, type, attribute, attribute2, attribute3) VALUES (";
 
         $bodyValues = "'".implode("', '", array_values($body))."'";
         $sql .= $bodyValues.");";
@@ -60,7 +62,9 @@ class API extends connect {
     public function deleteData($ids) {
         $ids = json_decode(file_get_contents("php://input"));
 
-        $stmt=$this->connectDB()->prepare("DELETE FROM products WHERE id IN (" . implode(",", array_values($ids)) . ")");
+        $sql_ids = implode(",", array_values($ids["ids"]));
+
+        $stmt=$this->connectDB()->prepare("DELETE FROM products WHERE id IN (". $sql_ids . ")");
         $stmt->execute();
 
         header("Content-Type: application/json");

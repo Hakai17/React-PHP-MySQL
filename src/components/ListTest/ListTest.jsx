@@ -19,14 +19,15 @@ function List() {
   }, []);
 
   const deleteProductById = () => {
-    let arrayids = [];
+    const arrayids = [];
     items.forEach((item) => {
       if (item.select) {
         arrayids.push(item.id);
       }
     });
-    axios.delete("http://localhost/scandiweb/src/api/index.php")
-    .then(redirectForHome)
+    axios
+      .delete("http://localhost/scandiweb/src/api/index.php")
+      .then(redirectForHome);
     console.log(arrayids);
   };
 
@@ -35,9 +36,8 @@ function List() {
     navigate("/addproduct");
   };
   const redirectForHome = () => {
-    navigate("/")
-  }
-
+    navigate("/");
+  };
 
   return (
     <div className="row">
@@ -51,7 +51,7 @@ function List() {
             onClick={() => {
               deleteProductById();
             }}
-            id="delete-product-btn"
+            className="delete-checkbox"
           >
             MASS DELETE
           </button>
@@ -82,9 +82,23 @@ function List() {
                   <p className="text-center product-card-text">
                     {item.price} $
                   </p>
-                  <p className="text-center product-card-text">
-                    {item.attribute}
-                  </p>
+                  <div>
+                    {item.type === "DVD" && (
+                      <p className="text-center product-card-text">
+                        Size: {item.attribute}MB
+                      </p>
+                    )}
+                    {item.type === "Book" && (
+                      <p className="text-center product-card-text">
+                       Weight: {item.attribute}KG
+                      </p>
+                    )}
+                    {item.type === "Furniture" && (
+                      <p className="text-center product-card-text">
+                        Dimension: {item.attribute}x{item.attribute2}x{item.attribute3}
+                      </p>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>
