@@ -9,10 +9,12 @@ export default function AddBody() {
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [attribute, setAttribute] = useState("");
+  const [attribute2, setAttribute2] = useState("");
+  const [attribute3, setAttribute3] = useState("");
   const [attributeSwitcher, setAttributeSwitcher] = useState("");
 
   function handleClick() {
-    const data = { sku, name, price, type, attribute };
+    const data = { sku, name, price, type, attribute, attribute2, attribute3 };
     axios
       .post("http://localhost/scandiweb/src/api/index.php", data)
       .then(response => console.log(response.data))
@@ -58,7 +60,6 @@ export default function AddBody() {
                 className="form-control"
                 name="sku"
                 id="sku"
-                required
                 value={sku}
                 onChange={(e) => setSku(e.target.value)}
               />
@@ -76,7 +77,6 @@ export default function AddBody() {
                 className="form-control"
                 name="name"
                 id="name"
-                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -94,7 +94,6 @@ export default function AddBody() {
                 className="form-control"
                 name="price"
                 id="price"
-                required
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
@@ -119,7 +118,6 @@ export default function AddBody() {
                   handleChangeAttributeSwitcher(event);
                   handleChangeType(event);
                 }}
-                required
               >
                 <option value="">Type Switcher</option>
                 <option value="DVD">DVD</option>
@@ -138,13 +136,12 @@ export default function AddBody() {
                       className="htmlForm-control"
                       name="size"
                       id="size"
-                      required
                       value={attribute}
                       onChange={(e) => setAttribute(e.target.value)}
                     />
                   </div>
                   <p className="description">
-                    Please, provide size in MB htmlFormat
+                    Please, provide size in MB
                   </p>
                 </div>
               )}
@@ -162,13 +159,12 @@ export default function AddBody() {
                       className="htmlForm-control"
                       name="weight"
                       id="weight"
-                      required
                       value={attribute}
                       onChange={(e) => setAttribute(e.target.value)}
                     />
                   </div>
                   <p className="description">
-                    Please, provide weight in KG htmlFormat
+                    Please, provide weight in KG
                   </p>
                 </div>
               )}
@@ -187,7 +183,6 @@ export default function AddBody() {
                         className="htmlForm-control"
                         name="height"
                         id="height"
-                        required
                         value={attribute}
                         onChange={(e) => setAttribute(e.target.value)}
                       />
@@ -206,7 +201,8 @@ export default function AddBody() {
                         className="htmlForm-control"
                         name="width"
                         id="width"
-                        required
+                        value={attribute2}
+                        onChange={(e) => setAttribute2(e.target.value)}
                       />
                     </div>
                   </div>
@@ -223,11 +219,12 @@ export default function AddBody() {
                         className="htmlForm-control"
                         name="length"
                         id="length"
-                        required
+                        value={attribute3}
+                        onChange={(e) => setAttribute3(e.target.value)}
                       />
                     </div>
                     <p className="description">
-                      Please, provide dimensions in HxWxL htmlFormat
+                      Please, provide dimensions in HxWxL
                     </p>
                   </div>
                 </>
