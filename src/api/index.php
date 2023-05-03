@@ -9,6 +9,12 @@ $method = $_SERVER['REQUEST_METHOD'];
 $request = explode('/', trim($_SERVER['REQUEST_URI'],'/'));
 $key = intval(array_shift($request));
 
+if(isset($_GET["ids"])) {
+    $path = explode("/", $_GET["ids"]);
+}
+
+if(isset($path[0])) { $action = $path[0]; } else { $action = ""; }
+
 switch ($method) {
     case 'GET':
         $api->showProduct($key);
@@ -18,7 +24,7 @@ switch ($method) {
         $api->createData($data);
         break;
     case 'DELETE':
-        $api->deleteData($key);
+        $api->deleteData($action);
         break;
     default:
         // Retornar um erro 405 - Método não permitido

@@ -60,9 +60,7 @@ class API extends connect {
     }
 
     public function deleteData($ids) {
-        $ids = json_decode(file_get_contents("php://input"));
-
-        $sql_ids = implode(",", array_values($ids["ids"]));
+        $sql_ids = trim($ids, '[]');
 
         $stmt=$this->connectDB()->prepare("DELETE FROM products WHERE id IN (". $sql_ids . ")");
         $stmt->execute();
