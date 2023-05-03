@@ -25,10 +25,23 @@ function List() {
         arrayids.push(item.id);
       }
     });
-    axios
-      .delete("http://localhost/scandiweb/src/api/index.php")
-      .then(redirectForHome);
-    console.log(arrayids);
+    fetch(
+      `http://localhost/scandiweb/src/api/index.php?ids=${arrayids.join(",")}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((res) => {
+        if (res.status === 200 || res.status === 204) {
+          console.log("Produto excluído com sucesso");
+          redirectForHome();
+        } else {
+          throw new Error("Erro ao excluir produto");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao excluir produto:", error);
+      });
   };
 
   const navigate = useNavigate();
@@ -90,12 +103,13 @@ function List() {
                     )}
                     {item.type === "Book" && (
                       <p className="text-center product-card-text">
-                       Weight: {item.attribute}KG
+                        Weight: {item.attribute}KG
                       </p>
                     )}
                     {item.type === "Furniture" && (
                       <p className="text-center product-card-text">
-                        Dimension: {item.attribute}x{item.attribute2}x{item.attribute3}
+                        Dimension: {item.attribute}x{item.attribute2}x
+                        {item.attribute3}
                       </p>
                     )}
                   </div>
