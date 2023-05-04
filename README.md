@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Scandiweb Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Technology used
 
-## Available Scripts
+- REACT-JS - Front-end
+- BOOSTRAP - Utilizes Sass for a modular and customizable architecture.
+- PHP - Back-end API
+- MySQL - Database
 
-In the project directory, you can run:
+### How to run locally
 
-### `npm start`
+1. It's recommended to use XAMPP as a local server because its installer already has MySQL to run the API. To download click [here](https://www.apachefriends.org/pt_br/index.html).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### How to run the project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. First clone the repository in the "/htdocs" directory located in the XAMPP root folder using the command:
 
-### `npm test`
+```sh
+    git clone https://github.com/Hakai17/scandiweb.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- It's also possible to clone to any other folder on your computer, just change the folder that XAMPP will serve. Click [here](https://www.servti.com/2019/01/08/como-change-default-folder-htdocs-of-xampp/) to read the tutorial on how to do.
 
-### `npm run build`
+2. Run the "APACHE" and "MySQL" services in XAMPP.
+3. Acess the phpmyadmin and create a database with name "_scandiweb_",
+if you already has a database, just change the value "dbanme" in "connect.php"
+4. import the file "products.sql".
+5. use "npm install", "npm install booststrap ^5.3.0-alpha3", "npm install react-router-dom" and "npm start" to run the project.
+6. Now the project is configured and ready to run.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Images
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img src="https://github.com/Hakai17/scandiweb/blob/developer/src/assets/images/homepage.png" alt="homepage" />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://github.com/Hakai17/scandiweb/blob/developer/src/assets/images/addpage.png" alt="addproduct page" />
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
