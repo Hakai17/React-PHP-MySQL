@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import {
+  Navigate,
   Route,
   Routes as RoutesReactRouterDom,
 } from "react-router-dom";
@@ -9,7 +10,8 @@ export function Routes() {
   return (
     <Suspense>
       <RoutesReactRouterDom>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/add-product" element={<AddProduct />} />
       </RoutesReactRouterDom>
     </Suspense>
