@@ -33,20 +33,20 @@ function List() {
     )
       .then((res) => {
         if (res.status === 200 || res.status === 204) {
-          console.log("Produto excluído com sucesso");
+          console.log("Success");
           redirectForHome();
         } else {
-          throw new Error("Erro ao excluir produto");
+          throw new Error("Error");
         }
       })
       .catch((error) => {
-        console.error("Erro ao excluir produto:", error);
+        console.error("Error", error);
       });
   };
 
   const navigate = useNavigate();
   const redirectForAdd = () => {
-    navigate("/addproduct");
+    navigate("/add-product");
   };
   const redirectForHome = () => {
     navigate("/");

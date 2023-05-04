@@ -56,7 +56,7 @@ export default function AddBody() {
               <button type="submit" onClick={handleClick}>
                 Save
               </button>
-              <button onClick={redirectForHome}>Cancel</button>
+              <button type="button" onClick={redirectForHome}>Cancel</button>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ export function Routes() {
       <RoutesReactRouterDom>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </RoutesReactRouterDom>
     </Suspense>
   );
